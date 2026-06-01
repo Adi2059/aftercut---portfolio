@@ -78,7 +78,7 @@ export default function HeroSection() {
 
       {/* 🚀 LEFT REEL (Ensure naam reel1.mp4 ho public/videos folder mein) */}
       <ReelPlayer 
-        src="/videos/reel1.mp4" 
+        video src="https://res.cloudinary.com/dnhr41qfc/video/upload/v1780338284/IMG_4659_lyz22u.mp4"
         pos="left-[3%] top-[15%]" 
         rotate="-rotate-6" 
         delay={0.2} 
@@ -86,7 +86,7 @@ export default function HeroSection() {
 
       {/* 🚀 RIGHT REEL (Ensure naam reel2.mp4 ho public/videos folder mein) */}
       <ReelPlayer 
-        src="/videos/reel2.mp4" 
+        video src="https://res.cloudinary.com/dnhr41qfc/video/upload/v1780338284/IMG_4659_lyz22u.mp4" 
         pos="right-[3%] top-[25%]" 
         rotate="rotate-6" 
         delay={0.5} 
