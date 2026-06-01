@@ -3,7 +3,7 @@ import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { cn } from "@/lib/utils";
 import type { Variants } from "framer-motion";
-import { fadeUp } from "@/lib/animations";
+import { fadeUp } from "../../lib/animation";
 
 interface SectionRevealProps {
   children: React.ReactNode;

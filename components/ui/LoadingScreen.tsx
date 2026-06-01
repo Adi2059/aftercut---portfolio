@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { useMouseGlow } from "@/hooks";
+import { useMouseGlow } from "../../hooks/useMouseGlow";
 
 export default function CursorGlow() {
   const { x, y } = useMouseGlow();

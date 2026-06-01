@@ -1,7 +1,7 @@
 "use client";
-
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+
 
 export default function CursorGlow() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
