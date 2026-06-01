@@ -132,14 +132,14 @@ export default function FeaturedWork() {
       title: "TypoGraphy Videos", 
       category: "Text Editing", 
       views: "1.2m+", 
-      videoSrc: "/videos/project1.mp4" 
+      videoSrc: "https://res.cloudinary.com/dnhr41qfc/video/upload/v1780337815/Video-876_ykopvt.mp4" 
     },
     { 
       id: 2, 
       title: "YouTube Documentary", 
       category: "LongForm Content", 
       views: "500K+ Views", 
-      videoSrc: "/videos/project2.mp4" 
+      videoSrc: "https://res.cloudinary.com/dnhr41qfc/video/upload/v1780337828/Lahore_s_Most_Brutal_Gang_War_Documentary_720P_HD_q9dd3y.mp4" 
     },
     { 
       id: 3, 
