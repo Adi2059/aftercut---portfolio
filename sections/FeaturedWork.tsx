@@ -146,14 +146,14 @@ export default function FeaturedWork() {
       title: "Advertisement Videos", 
       category: "Commercial & Performance Marketing", 
       views: "1M Views", 
-      videoSrc: "/videos/project3.mp4" 
+      videoSrc: "https://res.cloudinary.com/dnhr41qfc/video/upload/v1780387425/project3_xmm8wg.mp4" 
     },
     { 
       id: 4, 
       title: "Digital Marketing", 
       category: "Social Media", 
       views: "650k+ Views", 
-      videoSrc: "/videos/project4.mp4" 
+      videoSrc: "https://res.cloudinary.com/dnhr41qfc/video/upload/v1780387409/project4_jhukuo.mp4" 
     },
   ];
 

@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { useState, useRef } from "react";
 
-// 🎬 NAYA: Premium Video Player Component
+// 🎬 NAYA: Premium Video Player Component (For Desktop)
 const ReelPlayer = ({ src, pos, rotate, delay }: any) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
@@ -22,7 +22,7 @@ const ReelPlayer = ({ src, pos, rotate, delay }: any) => {
   };
 
   const toggleMute = (e: React.MouseEvent) => {
-    e.stopPropagation(); // Ye lagana zaroori hai taaki mute button dabane se video pause na ho jaye
+    e.stopPropagation();
     if (videoRef.current) {
       videoRef.current.muted = !isMuted;
       setIsMuted(!isMuted);
@@ -40,7 +40,6 @@ const ReelPlayer = ({ src, pos, rotate, delay }: any) => {
       onClick={togglePlay}
       className={`absolute hidden xl:flex flex-col items-center justify-center w-[240px] h-[420px] rounded-[2rem] border-2 border-white/10 backdrop-blur-sm bg-black overflow-hidden ${pos} ${rotate} hover:rotate-0 hover:scale-110 hover:z-50 hover:border-purple-500/80 hover:shadow-[0_0_40px_rgba(124,58,237,0.4)] transition-all duration-500 cursor-pointer group z-0`}
     >
-      {/* Video File */}
       <video
         ref={videoRef}
         src={src}
@@ -50,7 +49,6 @@ const ReelPlayer = ({ src, pos, rotate, delay }: any) => {
         className="w-full h-full object-cover transition-opacity duration-300"
       />
 
-      {/* Play Overlay (Jab pause ho tabhi dikhega) */}
       {!isPlaying && (
         <div className="absolute inset-0 bg-black/40 flex items-center justify-center transition-opacity duration-300">
           <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/30 group-hover:bg-purple-500 group-hover:scale-110 transition-all duration-300">
@@ -59,7 +57,6 @@ const ReelPlayer = ({ src, pos, rotate, delay }: any) => {
         </div>
       )}
 
-      {/* Premium Mute/Unmute Button */}
       <button
         onClick={toggleMute}
         className="absolute bottom-4 right-4 w-10 h-10 rounded-full bg-black/60 backdrop-blur-md border border-white/20 flex items-center justify-center text-white text-sm hover:bg-purple-600 hover:scale-110 transition-all z-20"
@@ -72,21 +69,22 @@ const ReelPlayer = ({ src, pos, rotate, delay }: any) => {
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden pt-24 pb-12">
+    // 🔥 FIX 1: Padding top ko pt-40 kiya hai phone ke liye, taaki text na kate
+    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden pt-40 md:pt-24 pb-12">
       {/* Background Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-purple-600/20 rounded-full blur-[150px] -z-10" />
 
-      {/* 🚀 LEFT REEL (Ensure naam reel1.mp4 ho public/videos folder mein) */}
+      {/* 🚀 LEFT REEL (Desktop) */}
       <ReelPlayer 
-        video src="https://res.cloudinary.com/dnhr41qfc/video/upload/v1780338284/IMG_4659_lyz22u.mp4"
+        src="https://res.cloudinary.com/dnhr41qfc/video/upload/v1780338318/IMG_4658_nqj3fa.mp4"
         pos="left-[3%] top-[15%]" 
         rotate="-rotate-6" 
         delay={0.2} 
       />
 
-      {/* 🚀 RIGHT REEL (Ensure naam reel2.mp4 ho public/videos folder mein) */}
+      {/* 🚀 RIGHT REEL (Desktop) */}
       <ReelPlayer 
-        video src="https://res.cloudinary.com/dnhr41qfc/video/upload/v1780338284/IMG_4659_lyz22u.mp4" 
+        src="https://res.cloudinary.com/dnhr41qfc/video/upload/v1780338284/IMG_4659_lyz22u.mp4" 
         pos="right-[3%] top-[25%]" 
         rotate="rotate-6" 
         delay={0.5} 
@@ -133,12 +131,41 @@ export default function HeroSection() {
           </Link>
         </motion.div>
 
+        {/* 🔥 FIX 2: MOBILE REELS (Ye sirf phone par dikhengi, buttons aur stats ke beech mein) */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="flex xl:hidden justify-center items-center gap-4 mt-16 w-full relative z-20 pointer-events-auto"
+        >
+          <div className="w-[140px] h-[240px] rounded-2xl overflow-hidden border border-white/20 shadow-[0_0_20px_rgba(168,85,247,0.2)] transform -rotate-6">
+            <video
+              src="https://res.cloudinary.com/dnhr41qfc/video/upload/v1780338284/IMG_4659_lyz22u.mp4"
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-full object-cover"
+            />
+          </div>
+          <div className="w-[140px] h-[240px] rounded-2xl overflow-hidden border border-white/20 shadow-[0_0_20px_rgba(168,85,247,0.2)] transform rotate-6 mt-12">
+            <video
+              src="https://res.cloudinary.com/dnhr41qfc/video/upload/v1780338284/IMG_4659_lyz22u.mp4"
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-full object-cover"
+            />
+          </div>
+        </motion.div>
+
         {/* Client Stats Counters */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.8 }}
-          className="mt-24 grid grid-cols-1 sm:grid-cols-3 gap-10 md:gap-16 border-t border-white/10 pt-12 w-full max-w-4xl relative z-20"
+          className="mt-20 grid grid-cols-1 sm:grid-cols-3 gap-10 md:gap-16 border-t border-white/10 pt-12 w-full max-w-4xl relative z-20"
         >
           <div className="flex flex-col items-center">
             <h3 className="text-5xl md:text-6xl font-black text-white mb-3">10M+</h3>
